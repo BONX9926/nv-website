@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/winhackger/nv-website/issues"
   },
-  "homepage": "https://github.com/winhackger/nv-website#readme"
+  "homepage": "https://github.com/winhackger/nv-website#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4"
+  }
 }
