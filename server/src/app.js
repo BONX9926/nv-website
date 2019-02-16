@@ -17,6 +17,34 @@ app.post('/hello', (req, res) => {
     res.send("OH post - "+ req.body.name)
 })
 
+
+// RESFUL api
+
+// create user
+app.post('/user', (req, res) => {
+    res.send("Create user")
+})
+
+// update user
+app.put('/user/:userId', (req, res) => {
+    res.send("Update user")
+})
+
+// delete user
+app.delete('/user/:userId', (req, res) => {
+    res.send("Delete user")
+})
+
+// get user by id
+app.get('/user/:userId', (req, res) => {
+    res.send("view user by id")
+})
+
+// get all user
+app.get('/users/', (req, res) => {
+    res.send("views all user")
+})
+
 let port = 8080
 
 app.listen(port, () => {
