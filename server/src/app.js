@@ -1,25 +1,35 @@
-let express = require("express")
+let express = require('express')
+let bodyParser = require('body-parser')
+const {sequelize} = require('./models')
+
 const app = express()
-let bodyParser = require("body-parser")
 
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended:true}))
-require("./routes")(app)
+app.use(bodyParser.urlencoded({extended: true}))
 
-app.get('/status', (req, res) => {
-    res.send("Hello server nodejs")
+require('./routes')(app)
+
+app.get('/status', function (req, res ){
+  res.send('Hello nodejs server')
 })
 
-app.get('/hello/:person', (req, res) => {
-    res.send("say hello with "+ req.params.person)
+app.get('/hello/:person', function (req,res) {
+  console.log('hello - ' + req.params.person)
+  res.send('sey hello with ' + req.params.person)
 })
 
-app.post('/hello', (req, res) => {
-    res.send("OH post - "+ req.body.name)
+app.post('/hello', function (req, res) {
+  res.send('OK  you post - ' + req.body.name)
 })
 
 let port = 8080
 
-app.listen(port, () => {
-    console.log(`server running port ${port}`)
+sequelize.sync({force: false}).then(() => {
+  app.listen(port, function () {
+      console.log('Server running on ' + port)
+  })
 })
+
+/* app.listen(port, function () {
+  console.log('server running on ' + port)
+}) */
